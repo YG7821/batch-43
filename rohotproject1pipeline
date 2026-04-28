@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Code') {
+            steps {
+                git url: 'https://github.com/itsrohitsinghrana/javaspringboot-ecommerce.git', branch: 'main'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh 'java -jar /var/lib/jenkins/workspace/project1withpipeline/target/Shopping_Cart-0.0.1-SNAPSHOT.jar --server.port=3000 '
+            }
+        }
+    }
+}

@@ -7,3 +7,14 @@ docker -v
 docker run -d --restart unless-stopped --name win11react -p   3000:3000 blueedge/win11react:latest
 
   docker ps
+
+
+Demo 2 
+
+docker run -it -d -p 8080:8080 --name Sudjenkins jenkins/jenkins:latest
+
+
+Day-3 
+
+curl -fsSL https://get.docker.com -o install-docker.sh
+sudo sh install-docker.sh
