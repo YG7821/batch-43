@@ -1,0 +1,142 @@
+sudo apt-get update
+sudo apt install docker.io -y
+
+docker run nginx
+
+2026/05/01 02:48:51 [notice] 1#1: start worker processes
+2026/05/01 02:48:51 [notice] 1#1: start worker process 29
+2026/05/01 02:48:51 [notice] 1#1: start worker process 30
+
+http://34.173.10.132/
+
+docker run -p 80:80 nginx
+              VM Host :container port
+			  
+			  i dont want to see this logs in my terminal        -d
+			  i want to change the name     --name aman
+			  
+		docker run -d --name amaan -p 80:80 nginx	
+
+docker run -d --name amaaaaan -p 80:80 nginx	
+
+	
+			  
+			  
+			  don t keep any data (HTML) in conatiner
+
+ZARA  whwr to kept ?
+
+Volume perstante 
+
+-v            VM Host location :container location   
+
+
+
+mkdir -p ~/docker-nginx/html
+cd ~/docker-nginx/html
+vi index.html
+
+
+
+
+docker run    nginx image will become container 
+ --name docker-nginx       container name 
+ -p 80:80                     port maping
+ -d                          deaachhaed 
+ -v ~/docker-nginx/html:/usr/share/nginx/html           volume maping
+ nginx
+ 
+ 
+ 
+ docker run -it ubuntu   i will go directly inside the conatiner
+apt-get upadte
+apt install python 
+
+
+my container is running 
+
+i want to go inside the conatiner ?
+
+docker exec -it 33efcf8848a6 /bash
+
+Paypal 
+Ubuntu container i dont want to go inside the conater but i want to run the commands 
+
+
+docker run alpine 
+
+
+docker stats 
+
+
+docker run -it centos:7
+    2  curl -fsSL https://get.docker.com -o install-docker.sh
+    3  sudo sh install-docker.sh
+    4  docker pull ubuntu
+    5  docker images
+    6  docker pull centos
+    7  docker pull cent-os
+    8  docker pull alpine
+    9  docker image
+   10  docker images
+   11  apt-get update
+   12  docker run nginx
+   13  docker run -d --name sam -p 80:80  nginx
+   14  mkdir -p ~/docker-nginx/html
+   15  cd ~/docker-nginx/html/
+   16  vi index.html
+  
+  117  docker run --name sam -p 80:80 -d -v ~/docker-nginx/html:/usr/share/nginx/html nginx
+  118  docker run ubuntu
+  119  docker ps
+  120  docket run -it ubuntu
+  121  docker run -it ubuntu
+  122  docker ps
+  123  nano index.html 
+  124  rm index.html 
+  125  vi index.html
+  126  docker ps
+  127  rm index.html 
+  128  vi index.html
+  129  history
+  
+  
+  
+  10 Container in 1 shot 
+  
+  logic 
+  Lopp 
+  while 
+  For 1-10
+  
+  
+  for i in {1..30}; do docker run -d --rm alpine sleep 1000; done
+docker ps
+
+
+
+for i in {1..30}; 
+do 
+docker run
+ -d
+ --rm
+ alpine
+ sleep 1000;
+ done
+ 
+ 
+docker ps
+
+docker run -it -d -p 8080:8080 jenkins/jenkins:latest
+
+docker run    jenkins latest imgae will become container
+-it    it
+-d     
+-p 8080:8080 
+jenkins/jenkins:
+latest
+
+
+docker run -d -p 8080:8080 jenkins/jenkins:latest
+
+cat /var/jenkins_home/secrets/initialAdminPassword

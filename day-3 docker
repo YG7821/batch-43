@@ -1,0 +1,40 @@
+
+FROM ubuntu
+MAINTAINER clouddevopshub@gmail.com
+RUN apt-get update
+RUN apt-get install nginx -y
+CMD [“echo”,”Image created”]
+
+
+
+@day-3docker:~# history
+    1  apt-get update
+    2  apt install docker-io -y
+    3  apt install docker.io -y
+    4  docker -v
+    5  vi Dockerfile
+    6  ls
+    7  docker images
+    8  docker build -t mynginxvaishali .
+    9  docker images
+   10  docker login
+   11  docker images
+   12  docker tag ebc3dee2c589 vikas4cloud/mynginxvaishali:latest
+   13  docker images
+   14  docker push vikas4cloud/mynginxvaishali:latest
+   15  docker ps
+   16  docker run -it -d ubuntu
+   17  docker ps
+   18  docker commit  a183433da18a  mohitimage
+   19  docker images
+   20  ls
+   21  docker inspect a183433da18a
+   22  docker logs a183433da18a
+   23  docker stats
+   24  docker stats a183433da18a
+   25  docker images
+   26  docker system df
+   27  docker system prune
+   28  docker image prune -a  
+   29  docker images
+   30  history

@@ -1,0 +1,85 @@
+-------------------------
+
+
+# -------- Stage 1 --------
+FROM node:18 AS first
+
+WORKDIR /app
+
+# Create a simple app file
+RUN echo "console.log('Hello from Multi-Stage Docker from batch-43')" > index.js
+
+
+# -------- Stage 2 --------
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy only the final file from Stage 1
+COPY --from=first /app/index.js .
+
+CMD ["node", "index.js"]
+
+
+
+
+
+
+tage the image with account name 
+login login 
+authtencicate 
+Sucessfull 
+web 
+Pwd 
+Docker push 
+
+------------
+Cloud 
+APi enable 
+
+repo created 
+copy path 
+
+africa-south1-docker.pkg.dev/march22paid/test
+
+
+---------------------
+
+Step 1: Login to GCP
+                                  gcloud auth login
+                                  gcloud config set project march22paid
+								  
+								  
+
+Step 2: Authenticate Docker with GCP
+This is important (many people miss this 👇)
+                                gcloud auth configure-docker africa-south1-docker.pkg.dev
+
+Step 3: Build Your Docker Image
+                                 docker build -t my-ajith .
+
+Step 4: Tag the Image (VERY IMPORTANT)
+You need to tag in this format:
+REGION-docker.pkg.dev/PROJECT-ID/REPO/IMAGE:TAG
+Your case:
+                                docker tag my-ajith africa-south1-docker.pkg.dev/march22paid/test/my-ajith:v1
+
+Step 5: Push the Image
+                                docker push africa-south1-docker.pkg.dev/march22paid/test/my-ajith:v1
+✅ Done!
+Now your image is available in Artifact Registry 🎉
+
+
+--------------
+
+
+docker network create my-network
+
+docker network ls
+
+brigge n/w
+
+docker run -dit --name backend --network my-network nginx
+docker run -dit --name frontend --network my-network alpine sh
+
+docker exec -it frontend sh
