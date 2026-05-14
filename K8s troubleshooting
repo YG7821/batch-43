@@ -1,0 +1,120 @@
+# 🚀 Kubernetes Troubleshooting — Fresher's Quick Reference
+
+> **CloudDevOpsHub** | For Demo & Interview Prep | Batch 43
+
+---
+
+## 🔍 Golden Rule — Always Start Here
+
+```bash
+kubectl get pods -n <namespace>          # See what's wrong
+kubectl describe pod <pod-name>          # Why it's wrong
+kubectl logs <pod-name> --previous       # What crashed
+```
+
+---
+
+## 1. 🔴 Pod Not Starting
+```bash
+kubectl get pods -n <namespace>
+kubectl describe pod <pod-name> -n <namespace>
+kubectl get events -n <namespace> --sort-by='.lastTimestamp'
+```
+
+---
+
+## 2. 🌐 Service Not Accessible
+```bash
+kubectl get svc -n <namespace>
+kubectl get endpoints <service-name> -n <namespace>   # Empty = label mismatch!
+kubectl port-forward svc/<service-name> 8080:80        # Quick local test
+```
+
+---
+
+## 3. 💾 PVC Not Bound
+```bash
+kubectl get pvc -n <namespace>
+kubectl get pv
+kubectl describe pvc <pvc-name> -n <namespace>
+```
+
+---
+
+## 4. ⚙️ ConfigMap Key Missing
+```bash
+kubectl get configmap -n <namespace>
+kubectl describe configmap <cm-name> -n <namespace>
+kubectl exec -it <pod-name> -- env | grep <KEY>        # Check inside pod
+```
+
+---
+
+## 5. 🔁 CrashLoopBackOff
+```bash
+kubectl logs <pod-name> --previous        # ← Most important command!
+kubectl describe pod <pod-name>           # Check liveness probe
+```
+
+---
+
+## 6. 🖼️ ImagePullBackOff
+```bash
+kubectl describe pod <pod-name>           # Check image name & tag
+kubectl get secret -n <namespace>         # Check pull secret exists
+```
+
+---
+
+## 7. 🖥️ Node Not Ready
+```bash
+kubectl get nodes
+kubectl describe node <node-name>         # Check conditions
+kubectl top node                          # CPU / Memory usage
+```
+
+---
+
+## 8. ⏳ Pod Stuck in Pending (Scheduling Failed)
+```bash
+kubectl describe pod <pod-name>           # Look at Events section
+kubectl get nodes --show-labels           # Check nodeSelector match
+```
+
+---
+
+## 9. 🔐 RBAC Forbidden Error
+```bash
+kubectl auth can-i get pods --as=system:serviceaccount:<ns>:<sa>
+kubectl get rolebindings -n <namespace>
+```
+
+---
+
+## 10. 🌍 Ingress Not Working
+```bash
+kubectl get ingress -n <namespace>
+kubectl describe ingress <name> -n <namespace>   # Check backend & rules
+kubectl get ingressclass                          # Is controller set?
+```
+
+---
+
+## ⚡ 5 Commands Every Fresher Must Know
+
+```bash
+kubectl get pods -A                        # All pods all namespaces
+kubectl describe pod <name>                # Full detail + events
+kubectl logs <name> --previous             # Crash logs
+kubectl get events --sort-by=lastTimestamp # Timeline of what happened
+kubectl rollout restart deployment/<name>  # Quick fix restart
+```
+
+---
+
+> 💡 **Demo Tip:** In interviews, always say —  
+> *"First I check pod status → then describe → then logs"*  
+> That's the 3-step debug flow interviewers love! ✅
+
+---
+*CloudDevOpsHub | India's Largest Cloud & DevOps Community 🇮🇳*
