@@ -33,9 +33,9 @@ apt install ansible
 
 ansible --version
 
- mkdir -p /etc/ansible 
- touch /etc/ansible/ansible.cfg
-
+mkdir -p /etc/ansible 
+touch /etc/ansible/ansible.cfg
+exit
 --------------------------------
 
 
