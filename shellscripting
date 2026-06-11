@@ -1,0 +1,169 @@
+vi vikas.sh
+i
+
+
+
+
+#! bin/bash
+pwd
+ls -l
+df -h
+free
+touch mayuresh
+
+ecs : wq enter 
+
+chmod +x vikas.sh
+
+./vikas.sh
+
+
+
+
+set of linux command .sh and run 
+
+
+
+1
+
+
+#!/bin/bash  
+echo "This is my shell script with batch-43"  
+ls
+echo "I am done running ls command"  
+SOMEVAR='Neetesh is expaining first the script'  
+echo "$SOMEVAR"
+
+-----------------
+
+
+xample 2
+#!/bin/bash 
+echo "Hello there"
+echo "My name is $(whoami)"
+echo "Nice to meet you"
+
+
+----------
+
+Example Monitoring script  
+
+#!/bin/bash  
+echo "This is a shell script"
+echo "the hostname of this machine is "
+hostname 
+hostname -i
+ps
+echo "memory used in the machine "
+free
+echo "disk used in the machine "
+df -h
+echo "the above information from the machine"  
+SOMEVAR='text stuff'  
+echo "$SOMEVAR"
+
+Expected Output 
+
+
+---------------------
+
+
+#!/bin/bash
+
+# Define bold color codes for a modern look
+BLUE='\033[1;34m'
+GREEN='\033[1;32m'
+CYAN='\033[1;36m'
+YELLOW='\033[1;33m'
+RESET='\033[0m'
+
+# Clear the screen for a clean presentation
+clear
+
+# Main Header
+echo -e "${BLUE}=======================================${RESET}"
+echo -e "${BLUE}         MY MONITORING SCRIPT          ${RESET}"
+echo -e "${BLUE}=======================================${RESET}"
+echo -e "${CYAN}Note: This is my 3rd script on machine.${RESET}\n"
+
+# Section 1: System Identification
+echo -e "${GREEN}[+] Host Identification${RESET}"
+echo -e "${GREEN}---------------------------------------${RESET}"
+echo -n "Hostname:   " && hostname
+echo -n "IP Address: " && hostname -i
+echo ""
+
+# Section 2: Storage and Memory
+echo -e "${YELLOW}[+] Resource Capacity${RESET}"
+echo -e "${YELLOW}---------------------------------------${RESET}"
+echo -e "--- Memory Overview ---"
+free -h
+echo ""
+echo -e "--- Disk Overview ---"
+df -h
+echo ""
+
+# Section 3: Active Processes
+echo -e "${CYAN}[+] Running Processes (Top 10 CPU Users)${RESET}"
+echo -e "${CYAN}---------------------------------------${RESET}"
+ps aux --sort=-%cpu | head -n 11
+echo ""
+
+echo -e "${BLUE}=======================================${RESET}"
+
+----------------------------
+
+
+#!/bin/bash
+# Write a shell script to display the process running on the system for every
+# 30 seconds, but only for 3 times.
+# -------------------------------------------------------------------------
+# -------------------------------------------------------------------------
+# 
+# for loop 3 times
+for r in 1 2 3
+do
+	#see every process on the system
+	echo "**************************** x^x^x ****************************"
+	ps
+	echo "**************************** x^x^x ****************************"
+	#sleep for 30 seconds
+	sleep 30
+        # clean
+done
+
+
+--------------------------
+
+
+
+#!/bin/bash
+
+# Sample script written for Part 4 of the RHCE series
+# This script will return the following set of system information:
+# -Hostname information:
+echo -e "\e[31;43m***** HOSTNAME INFORMATION *****\e[0m"
+hostnamectl
+echo ""
+# -File system disk space usage:
+echo -e "\e[31;43m***** FILE SYSTEM DISK SPACE USAGE *****\e[0m"
+df -h
+echo ""
+# -Free and used memory in the system:
+echo -e "\e[31;43m ***** FREE AND USED MEMORY *****\e[0m"
+free
+echo ""
+# -System uptime and load:
+echo -e "\e[31;43m***** SYSTEM UPTIME AND LOAD *****\e[0m"
+uptime
+echo ""
+# -Logged-in users:
+echo -e "\e[31;43m***** CURRENTLY LOGGED-IN USERS *****\e[0m"
+who
+echo ""
+# -Top 5 processes as far as memory usage is concerned
+echo -e "\e[31;43m***** TOP 5 MEMORY-CONSUMING PROCESSES *****\e[0m"
+ps -eo %mem,%cpu,comm --sort=-%mem | head -n 6
+echo ""
+echo -e "\e[1;32mDone.\e[0m"
+
